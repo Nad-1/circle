@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="circle.css">
+    <title>circle</title>
+</head>
+
+<style>
+    #body {
+        background-color: #fff;
+        padding: 0;
+        margin: 0;
+    }
+    
+    #container {
+        width: 950px;
+        height: 850px;
+        border: 15px #EDEDED solid;
+        overflow: hidden;
+        background-color: #fff;
+        cursor: pointer;
+    }
+    
+    #circle1 {
+        width: 300px;
+        height: 300px;
+        border: 10px solid rgb(255, 255, 255);
+        border-radius: 50%;
+        cursor: pointer;
+        background-color: rgb(178, 107, 107);
+        color: aliceblue;
+        transform: translate3d(50px, 50px, 0);
+        transition: transform .3s cubic-bezier(0, .46, .52, .24);
+    }
+    
+    #circle2 {
+        width: 200px;
+        height: 200px;
+        border: 10px solid rgb(255, 255, 255);
+        border-radius: 50%;
+        cursor: pointer;
+        margin-top: 40px;
+        margin-left: 35px;
+        background-color: rgb(74, 45, 45);
+        color: aliceblue;
+    }
+    
+    #circle3 {
+        width: 100px;
+        height: 100px;
+        border: 10px solid rgb(255, 255, 255);
+        border-radius: 50%;
+        cursor: pointer;
+        margin-top: 40px;
+        margin-left: 35px;
+        background-color: rgb(61, 41, 41);
+        color: aliceblue;
+    }
+</style>
+
+<script>
+    var i = 0;
+
+    function clickablediv1() {
+        var color = ["007333", "#FFC300", "#DAF7A6", "EAD9FA", "#581845 ", "#5f27cd"];
+        i = i < color.length ? ++i : 0;
+        document.getElementById("circle1").style.background = color[i];
+    }
+
+    function clickablediv2() {
+
+        var color = ["#5f27cd", "#10ac84", "#0abde3", "#ee5253", "#f368e0", "#222f3e"];
+        i = i < color.length ? ++i : 0;
+        document.getElementById("circle2").style.background = color[i];
+    }
+
+    function clickablediv3() {
+
+        var color = ["#008080", "#5f27cd", "#FFFF00", "#0abde3", "FAD9DC", "#f368e0", "#222f3e"];
+        i = i < color.length ? ++i : 0;
+        document.getElementById("circle3").style.background = color[i];
+    }
+</script>
+
+<body>
+    <div id="container">
+        <div id="circle1" onClick="clickablediv1()">
+
+            <div id="circle2" onClick="clickablediv2()">
+                <div id="circle3" onClick="clickablediv3()">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        var i = 0;
+        var object = document.querySelector("#circle1");
+        var container = document.querySelector("#container");
+        container.addEventListener("click", getClickPosition, false);
+
+
+        function getClickPosition(e) {
+            var xPosition = e.clientX - (object.offsetWidth / 2);
+            var yPosition = e.clientY - (object.offsetHeight / 2);
+            var translate3dvalue = "translate3d(" + xPosition + "px," + yPosition + "px, 0)";
+            object.style.transform = translate3dvalue;
+
+        }
+    </script>
+
+
+
+</body>
+
+</html>
